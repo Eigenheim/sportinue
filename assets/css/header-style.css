@@ -371,20 +371,7 @@ li {
   display: inline-block;
   vertical-align: top;
 }
-.input-group-btn .btn {
-  background: #bdc3c7;
-  line-height: 9px 12px 10px;
-  line-height: 22px;
-  border: 0;
-  margin: 0;
-  color: #fff;
-  margin-left: 0 !important;
-  padding-left: 10px;
-  padding-right: 12px;
-}
-.input-group-btn .btn:hover {
-  background: #cacfd2;
-}
+
 textarea,
 input[type="text"],
 input[type="password"],

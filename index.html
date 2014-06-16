@@ -24,7 +24,25 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
    			$.localScroll({duration:800});
+
+   			$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        
+        		var input = $(this).parents('.input-group').find(':text'),
+            	log = numFiles > 1 ? numFiles + ' files selected' : label;
+        
+        		if( input.length ) {
+            		input.val(log);
+        		} else {
+            		if( log ) alert(log);
+        		}
+    		});
 		});
+		$(document).on('change', '.btn-file :file', function() {
+    		var input = $(this),
+    		numFiles = input.get(0).files ? input.get(0).files.length : 1,
+    		label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    		input.trigger('fileselect', [numFiles, label]);
+    	});
 	</script>
 	<header class="header-11 bg-clouds">
 		<div class="container">
@@ -61,8 +79,8 @@
 			</div>
 		</div>
 	</section>
-	<a name="learnmore"></a>
 	<section class="content-7 v-center">
+	<a name="learnmore"></a>
     <div>
         <div class="container">
             <h2>How it works</h2>
@@ -75,24 +93,37 @@
     </div>
     <a class="control-btn fui-arrow-down" href="#signup"> </a>
 	</section>
-	</section>
-	<a name="signup"></a>
-	<section class="content-13 subscribe-form bg-blueprint-blue">
-    <div class="container">
-        <div class="row">
-            <form action="http://forms.brace.io/sport@themiscellaneous.de" method="POST">
-                <div class="col-sm-8">
-                    <input name="_replyto" type="email" class="bg-clouds" placeholder="Enter your e-mail" spellcheck="false">
+	<div class="delimiter line"></div>
+	<section class="content-7 v-center">
+    <div>
+        <div class="container">
+        	<a name="signup"></a>
+            <h2>Try out now</h2>
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="assets/images/SportinueSteps1.png" alt="" width="500" height="400">
                 </div>
                 <div class="col-sm-4">
-                    <button class="btn btn-large btn-primary" type="submit">
-                        Join now
-                    </button>
+                    
+		            	<div class="form-group signup">
+				            <div class="input-group">
+				  				<span class="input-group-btn">
+				  					<span class="btn btn-file">File<input type="file"></span>
+				  				</span>
+				  				<input name="_filename" type="text" class="form-control" placeholder="Filename" readonly>
+				  			</div>
+			               	<input name="_replyto" type="email" class="form-control" placeholder="Enter your e-mail" spellcheck="false">
+			               	<button class="btn btn-large btn-primary pull-right" type="submit">Submit</button>
+		                </div>
+
                 </div>
-            </form>
+                <div class="col-sm-4">
+                    <img src="assets/images/SportinueSteps2.png" alt="" width="500" height="400">
+                </div>
+            </div>
         </div>
     </div>
-</section>
+	</section>
 	<footer class="footer-2 bg-clouds">
 	    <div class="container">
 	        <div class="additional-links">
