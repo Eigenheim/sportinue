@@ -43,6 +43,51 @@
     		label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
     		input.trigger('fileselect', [numFiles, label]);
     	});
+
+    	function uploadFile() {
+			var file = document.getElementById("fileA").files[0];
+    		var formData = new FormData();
+   			var client = new XMLHttpRequest();
+			//var prog = document.getElementById("progress");
+ 
+    		if(!file) return;
+ 
+    		//prog.value = 0;
+    		//prog.max = 100;
+ 
+    		//Add file to formData
+    		formData.append("datei", file);
+			formData.append("mail", $("#mail").value);
+	
+ 			// alert(document.Formular.mail.value);
+    		client.onerror = function(e) {
+        		alert("An error occured");
+    		};
+	
+	
+			if (file.type=="video/x-flv" || file.type=="video/mp4" || file.type=="video/x-ms-wmv" || file.type=="video/x-msvideo" || file.type=="video/mpeg" || file.type=="video/quicktime" || file.type=="video/x-sgi-movie") {
+
+			    // client.onload = function(e) {
+			    //     document.getElementById("prozent").innerHTML = "100%";
+			    //     prog.value = prog.max;
+			    // };
+ 
+			  //   client.upload.onprogress = function(e) {
+			  // 		var p = Math.round(100 / e.total * e.loaded);
+			  //        document.getElementById("progress").value = p;            
+			  //        document.getElementById("prozent").innerHTML = p + "%";
+			  //   };
+	
+				client.onabort = function(e) {
+					alert("Upload abgebrochen");
+				};
+ 
+    			client.open("POST", "upload.php");
+    			client.send(formData);
+			} else {
+				alert("Wrong data format");
+			}
+		}
 	</script>
 	<header class="header-11 bg-clouds">
 		<div class="container">
@@ -104,13 +149,13 @@
                     <img src="assets/images/SportinueSteps1.png" alt="" width="500" height="400">
                 </div>
                 <div class="col-sm-4">
-		            	<div class="form-group signup">
+		            	<div name="Formular" class="form-group signup">
 		            		<div class="input-group">
-      							<span class="input-group-btn"><span class="btn btn-primary btn-file">Choose File<input type="file"></span></span>
+      							<span class="input-group-btn"><span class="btn btn-primary btn-file">Choose File<input type="file" id="fileA"></span></span>
       							<input name="_filename" type="text" class="form-control" placeholder="Filename" readonly>
     						</div>
-		            		<input name="_replyto" type="email" class="form-control" placeholder="Enter your e-mail" spellcheck="false">	
-			               	<button class="btn btn-large btn-primary pull-right" type="submit">Submit</button>
+		            		<input id="mail" name="_replyto" type="email" class="form-control" placeholder="Enter your e-mail" spellcheck="false">	
+			               	<button class="btn btn-large btn-primary pull-right" type="submit" onClick="uploadFile();">Submit</button>
 		                </div>
                 </div>
                 <div class="col-sm-4">
