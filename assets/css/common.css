@@ -28,14 +28,29 @@
 }
 
 .signup .btn {
-  color: white;
-  background-color: #00304a;
+  background-color: #FF6600;
+  border: 1px solid #f36100;
+}
+
+.signup .btn:hover {
+  background-color: #ff7e0e;
+}
+
+.signup .btn.btn-large {
+  margin-top: 4px !important;
+  margin-right: 25px !important;
+  background-color: #FF6600;
+  border: 1px solid #f36100;
+}
+
+.signup .btn.btn-large:hover {
+  background-color: #ff7e0e;
 }
 
 .signup input[type=text],
 .signup input[type=password],
 .signup input[type=email] {
-  width: 100%;
+  width: 93%;
   height: 42px;
   padding-left: 15px;
   background: #fff;
@@ -52,11 +67,7 @@
   cursor: text !important;
   opacity: 1 !important;
   color: #00304a !important;
+  width: 100% !important;
 }
 
-.input-group-btn .btn {
-  background-color: #00304a;
-  color: white;
-  border: 2px solid #00304a;
-}
 

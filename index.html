@@ -27,7 +27,7 @@
 
    			$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
         
-        		var input = $(this).parents('.input-group').find(':text'),
+        		var input = $(this).parents('.form-inline').find(':text'),
             	log = numFiles > 1 ? numFiles + ' files selected' : label;
         
         		if( input.length ) {
@@ -104,18 +104,18 @@
                     <img src="assets/images/SportinueSteps1.png" alt="" width="500" height="400">
                 </div>
                 <div class="col-sm-4">
-                    
 		            	<div class="form-group signup">
-				            <div class="input-group">
-				  				<span class="input-group-btn">
-				  					<span class="btn btn-file">File<input type="file"></span>
-				  				</span>
-				  				<input name="_filename" type="text" class="form-control" placeholder="Filename" readonly>
-				  			</div>
+		            		<div class="form-inline">
+		            			<div class="form-group">
+		            				<span class="btn btn-primary btn-file">Choose File<input type="file"></span>
+		            			</div>
+		            			<div class="form-group">
+		            				<input name="_filename" type="text" class="form-control" placeholder="Filename" readonly>
+		            			</div>
+		            		</div>				  			
 			               	<input name="_replyto" type="email" class="form-control" placeholder="Enter your e-mail" spellcheck="false">
 			               	<button class="btn btn-large btn-primary pull-right" type="submit">Submit</button>
 		                </div>
-
                 </div>
                 <div class="col-sm-4">
                     <img src="assets/images/SportinueSteps2.png" alt="" width="500" height="400">
