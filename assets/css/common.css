@@ -29,22 +29,23 @@
 
 .signup .btn {
   background-color: #FF6600;
-  border: 1px solid #f36100;
+  opacity: 0.85;
+  border: 1px solid #ce5300;
 }
 
 .signup .btn:hover {
-  background-color: #ff7e0e;
+  opacity: 1;
 }
 
 .signup .btn.btn-large {
   margin-top: 4px !important;
   margin-right: 25px !important;
   background-color: #FF6600;
-  border: 1px solid #f36100;
+  border: 1px solid #ce5300;
 }
 
 .signup .btn.btn-large:hover {
-  background-color: #ff7e0e;
+  opacity: 1;
 }
 
 .signup input[type=text],
