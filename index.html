@@ -48,12 +48,13 @@
 			var file = document.getElementById("fileA").files[0];
     		var formData = new FormData();
    			var client = new XMLHttpRequest();
-			//var prog = document.getElementById("progress");
+			var prog = $(".progress");
  
     		if(!file) return;
  
-    		//prog.value = 0;
-    		//prog.max = 100;
+ 			// Initialize progress bar
+ 			prog.attr("style", "width: 0%;");
+ 			prog.removeClass("hidden");
  
     		//Add file to formData
     		formData.append("datei", file);
@@ -67,16 +68,16 @@
 	
 			if (file.type=="video/x-flv" || file.type=="video/mp4" || file.type=="video/x-ms-wmv" || file.type=="video/x-msvideo" || file.type=="video/mpeg" || file.type=="video/quicktime" || file.type=="video/x-sgi-movie") {
 
-			    // client.onload = function(e) {
-			    //     document.getElementById("prozent").innerHTML = "100%";
-			    //     prog.value = prog.max;
-			    // };
+			    client.onload = function(e) {
+			    	// hide progress bar again
+			    	prog.attr("style", "width: 100%;");
+			    	prog.addClass("hidden");
+			    };
  
-			  //   client.upload.onprogress = function(e) {
-			  // 		var p = Math.round(100 / e.total * e.loaded);
-			  //        document.getElementById("progress").value = p;            
-			  //        document.getElementById("prozent").innerHTML = p + "%";
-			  //   };
+				client.upload.onprogress = function(e) {
+		 			var p = Math.round(100 / e.total * e.loaded);          
+			  	    prog.attr("style", "width: " + p + "%");
+			    };
 	
 				client.onabort = function(e) {
 					alert("Upload abgebrochen");
@@ -155,8 +156,11 @@
       							<input name="_filename" type="text" class="form-control" placeholder="Filename" readonly>
     						</div>
 		            		<input id="mail" name="_replyto" type="email" class="form-control" placeholder="Enter your e-mail" spellcheck="false">	
-			               	<button class="btn btn-large btn-primary pull-right" type="submit" onClick="uploadFile();">Submit</button>
+			               	<div class="row"><button class="btn btn-large btn-primary pull-right" type="submit" onClick="uploadFile();">Submit</button></div>
 		                </div>
+		                <div class="progress hidden">
+  							<div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+						</div>
                 </div>
                 <div class="col-sm-4">
                     <img src="assets/images/SportinueSteps2.png" alt="" width="500" height="400">

@@ -51,8 +51,18 @@
 
 .signup .btn.btn-large {
   margin-top: 4px !important;
+  margin-right: 15px;
   background-color: #00304a;
   border: 1px solid #001d2d;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  background-color: #FF6600;
+}
+
+.hidden {
+  display: none;
 }
 
 .signup .btn.btn-large:hover {
